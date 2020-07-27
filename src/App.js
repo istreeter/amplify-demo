@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Auth } from 'aws-amplify';
 import './App.css';
+
+const updateAttributes = async () => {
+  const user = await Auth.currentAuthenticatedUser();
+  Auth.updateUserAttributes(user, {'nickname': 'xyz'});
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => Auth.federatedSignIn({provider: "Google"})}>Sign In with Google</button>
+      <button onClick={() => Auth.federatedSignIn()}>Sign In</button>
+      <button onClick={() => Auth.signOut()}>Sign Out</button>
+      <button onClick={updateAttributes}>Update attributes</button>
     </div>
   );
 }
