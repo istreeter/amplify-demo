@@ -12,9 +12,9 @@ Amplify.configure({
     userPoolWebClientId: process.env.REACT_APP_USER_POOL_WEB_CLIENT_ID,
     oauth: {
       domain: process.env.REACT_APP_OAUTH_DOMAIN,
-      scope: ['openid', 'aws.cognito.signin.user.admin'],
-      redirectSignIn: 'http://localhost:3000',
-      redirectSignOut: 'http://localhost:3000',
+      scope: ['openid', 'aws.cognito.signin.user.admin', 'prospect-agent/use:all'],
+      redirectSignIn: 'http://localhost:3000/',
+      redirectSignOut: 'http://localhost:3000/',
       responseType: 'code',
     },
   }
