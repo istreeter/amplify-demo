@@ -5,8 +5,6 @@ import App from './App';
 import { Amplify } from 'aws-amplify';
 import * as serviceWorker from './serviceWorker';
 
-console.log(process.env);
-
 Amplify.configure({
   Auth: {
     region: 'eu-central-1',
@@ -15,8 +13,8 @@ Amplify.configure({
     oauth: {
       domain: process.env.REACT_APP_OAUTH_DOMAIN,
       scope: ['openid', 'aws.cognito.signin.user.admin'],
-      redirectSignIn: 'http://localhost:3000/',
-      redirectSignOut: 'http://localhost:3000/',
+      redirectSignIn: 'http://localhost:3000',
+      redirectSignOut: 'http://localhost:3000',
       responseType: 'code',
     },
   }
